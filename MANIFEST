@@ -1,0 +1,12 @@
+MANIFEST
+README
+LICENSE
+Todo
+Changes
+Makefile.PL
+lib/List/NSect.pm
+t/001_wantarray.t
+t/001_wantscalar.t
+perl-List-NSect.spec
+scripts/List-NSect-Parallel-ForkManager-example.pl
+META.yml                                 Module meta-data (added by MakeMaker)
