@@ -1,6 +1,15 @@
 Revision history for Perl module List::NSect
 
-0.02 2012-01-20
+0.04 2013-05-11
+  - Added spart function
+
+0.03 2013-01-27
+  - Added Test::Spelling to SVN not distribution
+  - Tweaked documentation
+  - Updated nsect function to handle undef $n cleanly.
+  - Added List-NSect-card-dealer.pl
+
+0.02 2013-01-27
   - Fixed edge case were n > count
   - Added Parallel::ForkManager example script
   - Moved Exporter out of BEGIN block

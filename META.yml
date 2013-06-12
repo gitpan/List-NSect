@@ -1,7 +1,7 @@
 --- #YAML:1.0
 name:                List-NSect
-version:             0.02
-abstract:            To cut or divide a list into N equal parts.
+version:             0.04
+abstract:            Cuts or divides a list into N equal parts.
 license:             ~
 author:              
     - Michael R. Davis (mdavis@stopllc.com)
