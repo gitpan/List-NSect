@@ -1,5 +1,5 @@
 Name:           perl-List-NSect
-Version:        0.04
+Version:        0.06
 Release:        1%{?dist}
 Summary:        To cut or divide a list into N equal parts
 License:        Distributable, see LICENSE

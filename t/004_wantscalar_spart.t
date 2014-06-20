@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 56;
+use Test::More tests => 57;
 
 BEGIN { use_ok( 'List::NSect', qw{spart} ); }
 
@@ -79,6 +79,7 @@ isa_ok($s->[0], "ARRAY");
 isa_ok($s->[1], "ARRAY");
 isa_ok($s->[2], "ARRAY");
 isa_ok($s->[3], "ARRAY");
+isa_ok($s->[4], "ARRAY");
 is(scalar(@{$s->[0]}), 4);
 is(scalar(@{$s->[1]}), 4);
 is(scalar(@{$s->[2]}), 4);

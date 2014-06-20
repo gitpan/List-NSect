@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                List-NSect
-version:             0.04
+version:             0.06
 abstract:            Cuts or divides a list into N equal parts.
 license:             ~
 author:              

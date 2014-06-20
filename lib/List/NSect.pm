@@ -4,9 +4,9 @@ use warnings;
 use base qw{Exporter};
 use List::MoreUtils qw{part};
 
-our $VERSION = '0.04';
+our $VERSION = '0.06';
 our @EXPORT  = qw(nsect);
-our @EXPORT_OK  = qw(spart);
+our @EXPORT_OK  = qw(spart deal);
 
 =for stopwords natatime nsect
 
@@ -64,17 +64,16 @@ Returns an array of array references given a scalar number of sections and a lis
 =cut
 
 sub nsect {
-  my $n     = shift || 0;
-  my $count = scalar(@_);
+  my $n        = shift || 0;
+  my $count    = scalar(@_);
+  my @sections = ();
   #undef, 0 or empty array returns nothing as requested
   if ($n > 0 and $count > 0) {
     $n=$count if $n > $count;
     my $i=0;
-    my @sections=part {int($i++ * $n / $count)} @_; #Each partition created is a reference to an array.
-    return wantarray ? @sections : \@sections;
-  } else {
-    return wantarray ? () : [];
+    @sections=part {int($i++ * $n / $count)} @_; #Each partition created is a reference to an array.
   }
+  return wantarray ? @sections : \@sections;
 }
 
 =head2 spart (not exported by default)
@@ -86,21 +85,40 @@ Returns an array of array references given a scalar size and a list.
   my @parts=spart(4, 1 .. 17); #returns ([1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16],[17]);
   my $parts=spart(4, 1 .. 17); #returns [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16],[17]];
 
-Note: The last array reference many be short.
+Note: The last array reference may be short.
 
 =cut
 
 sub spart {
-  my $n = shift || 0;
+  my $parts = shift || 0;
+  my @deck  = ();
   #undef, 0 or empty array returns nothing as requested
-  if ($n > 0) {
-    my $i=0;
-    my @sections=part {int($i++ / $n)} @_; #/#Each partition created is a reference to an array.
-    return wantarray ? @sections : \@sections;
-  } else {
-    return wantarray ? () : [];
+  if ($parts > 0) {
+    my $i = 0;
+    @deck = part {int($i++ / $parts)} @_; #/#Each partition created is a reference to an array.
   }
+  return wantarray ? @deck : \@deck;
+}
 
+=head2 deal (not exported by default)
+
+Deals a list into hands
+
+Returns an array of array references given a scalar size and a list.
+
+  my @hands=deal(4, 1 .. 17); #returns ([1,5,9,13,17],[2,6,10,14],[3,7,11,15],[4,8,12,16]);
+
+=cut
+
+sub deal {
+  my $hands = shift || 0;
+  my @deck  = ();
+  #undef, 0 or empty array returns nothing as requested
+  if ($hands > 0) {
+    my $hand = 0;
+    @deck=part {$hand=0 if $hand>=$hands; $hand++;} @_;
+  }
+  return wantarray ? @deck : \@deck;
 }
 
 =head1 LIMITATIONS

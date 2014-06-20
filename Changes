@@ -1,7 +1,13 @@
 Revision history for Perl module List::NSect
 
+0.06 2014-06-20
+  - Refactored functions to return only at end.
+
+0.05 2014-06-20
+  - Added deal function and tests
+
 0.04 2013-05-11
-  - Added spart function
+  - Added spart function and test
 
 0.03 2013-01-27
   - Added Test::Spelling to SVN not distribution
